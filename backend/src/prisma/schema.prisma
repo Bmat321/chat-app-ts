@@ -4,8 +4,8 @@ datasource db {
 }
 
 generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = ["native", "darwin"]
+  provider = "prisma-client-js"
+  // binaryTargets = ["native", "darwin"]
 }
 
 model Account {
@@ -87,4 +87,3 @@ model Message {
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
 }
-

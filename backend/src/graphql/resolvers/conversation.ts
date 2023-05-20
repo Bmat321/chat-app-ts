@@ -4,10 +4,10 @@ import {
   ConversationDeletedSupscritionPayload,
   GraphqlContext,
 } from "../../utils/types";
-import { GraphQLError } from "graphql";
 import { Prisma } from "@prisma/client";
 import { withFilter } from "graphql-subscriptions";
 import { userIsConversationParticipant } from "../../utils/functions";
+import { GraphQLError } from "graphql";
 
 const resolvers = {
   Query: {
