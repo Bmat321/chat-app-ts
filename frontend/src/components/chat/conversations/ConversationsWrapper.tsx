@@ -75,7 +75,7 @@ const ConversationsWrapper: React.FC<ConversationsWrapperProps> = ({
     ConversationOperations.Subscriptions.conversationDeleted,
     {
       onData: ({ client, data }) => {
-        console.log("deleted sub data", data);
+        // console.log("deleted sub data", data);
         const { data: subscriptionData } = data;
 
         if (!subscriptionData) return;
@@ -179,7 +179,7 @@ const ConversationsWrapper: React.FC<ConversationsWrapperProps> = ({
         },
       });
     } catch (error: any) {
-      console.log("markConversation error", error);
+      // console.log("markConversation error", error);
       throw new GraphQLError(error.message);
     }
   };

@@ -1,5 +1,13 @@
 import { useMutation } from "@apollo/client";
-import { Button, Center, Image, Input, Stack, Text, Toast } from "@chakra-ui/react";
+import {
+  Button,
+  Center,
+  Image,
+  Input,
+  Stack,
+  Text,
+  Toast,
+} from "@chakra-ui/react";
 import { Session } from "next-auth";
 import { signIn } from "next-auth/react";
 import React, { useState } from "react";
@@ -36,13 +44,13 @@ const Auth: React.FC<AuthProps> = ({ session, reLoadSession }) => {
         throw new Error(error);
       }
 
-      toast.success('Username successfully created! 🚀' )
+      toast.success("Username successfully created! 🚀");
 
-      // Reload session if its true 
+      // Reload session if its true
       reLoadSession();
     } catch (error: any) {
-      toast.error(error?.message)
-      console.log("onSubmit", error);
+      toast.error(error?.message);
+      // console.log("onSubmit", error);
     }
   };
 

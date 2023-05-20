@@ -26,7 +26,6 @@ const Messages: React.FC<MessagesProps> = ({ userId, conversationId }) => {
       toast.error(message);
     },
   });
-  
 
   const subscribeToMoreMessages = (conversationId: string) => {
     return subscribeToMore({
@@ -37,12 +36,15 @@ const Messages: React.FC<MessagesProps> = ({ userId, conversationId }) => {
       updateQuery: (prev, { subscriptionData }: MessageSubscriptionData) => {
         if (!subscriptionData.data) return prev;
 
-        console.log("Subscription message data", subscriptionData.data);
+        // console.log("Subscription message data", subscriptionData.data);
 
         const newMessage = subscriptionData.data.messageSent;
 
         return Object.assign({}, prev, {
-          messages: newMessage.sender.id === userId ? prev.messages : [newMessage, ...prev.messages],
+          messages:
+            newMessage.sender.id === userId
+              ? prev.messages
+              : [newMessage, ...prev.messages],
         });
       },
     });
@@ -52,12 +54,10 @@ const Messages: React.FC<MessagesProps> = ({ userId, conversationId }) => {
     const unsubscribe = subscribeToMoreMessages(conversationId);
 
     return () => unsubscribe();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [conversationId]);
 
- 
-
-  console.log("HERE IS MESSAGES DATA", data);
+  // console.log("HERE IS MESSAGES DATA", data);
 
   return (
     <Flex direction="column" justify="flex-end" overflow="hidden">

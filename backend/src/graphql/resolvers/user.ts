@@ -33,7 +33,7 @@ const resolvers = {
 
         return users;
       } catch (error: any) {
-        console.log("SEARCHUSERNAME", error);
+        // console.log("SEARCHUSERNAME", error);
         throw new GraphQLError(error.message);
       }
     },
@@ -82,7 +82,7 @@ const resolvers = {
 
         return { success: true };
       } catch (error: any) {
-        console.log("USERNAME ERROR", error);
+        // console.log("USERNAME ERROR", error);
         return {
           error: error?.message,
         };

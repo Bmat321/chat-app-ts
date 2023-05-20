@@ -36,7 +36,6 @@ const resolvers = {
             !!conversation.participants.find((p) => p.userId === userId)
         );
       } catch (error: any) {
-        console.log("CONVERSATION QUERY", error);
         throw new GraphQLError(error.message);
       }
     },
@@ -50,7 +49,7 @@ const resolvers = {
     ): Promise<{ conversationId: string }> => {
       const { prisma, session, pubsub } = context;
       const { participantIds } = args;
-      console.log("IDS", participantIds);
+      // console.log("IDS", participantIds);
       if (!session?.user) {
         throw new GraphQLError("Noth authorized");
       }
@@ -79,7 +78,7 @@ const resolvers = {
           conversationId: conversation.id,
         };
       } catch (error) {
-        console.log("Conversation in Resolvers", error);
+        // console.log("Conversation in Resolvers", error);
         throw new GraphQLError("Error creating conversation");
       }
     },
@@ -118,7 +117,7 @@ const resolvers = {
         });
         return true;
       } catch (error: any) {
-        console.log("marked message error", error);
+        // console.log("marked message error", error);
         throw new GraphQLError(error.message);
       }
     },
@@ -159,7 +158,7 @@ const resolvers = {
           conversationDeleted: deletedConversation,
         });
       } catch (error: any) {
-        console.log("DELETE CONVERSATION", error);
+        // console.log("DELETE CONVERSATION", error);
         throw new GraphQLError("Failed to delete conversation");
       }
       return true;
@@ -188,11 +187,7 @@ const resolvers = {
             conversationCreated: { participants },
           } = payload;
 
-          return userIsConversationParticipant(
-            participants,
-            session.user.id
-          );
-
+          return userIsConversationParticipant(participants, session.user.id);
         }
       ),
     },
@@ -222,11 +217,7 @@ const resolvers = {
             user: { id: userId },
           } = session;
 
-          return userIsConversationParticipant(
-            participants,
-            userId
-          );
-
+          return userIsConversationParticipant(participants, userId);
         }
       ),
     },
@@ -253,12 +244,7 @@ const resolvers = {
             conversationDeleted: { participants },
           } = payload;
 
-          return userIsConversationParticipant(
-            participants,
-            userId
-          );
-
-   
+          return userIsConversationParticipant(participants, userId);
         }
       ),
     },

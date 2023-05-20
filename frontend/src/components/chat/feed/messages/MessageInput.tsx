@@ -35,7 +35,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
         body: messageBody,
       };
 
-      setMessageBody('')
+      setMessageBody("");
 
       const { data, errors } = await sendMessage({
         variables: {
@@ -79,7 +79,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
         throw new Error("Failed to send message");
       }
     } catch (error: any) {
-      console.log("Send Message error", error);
+      // console.log("Send Message error", error);
       toast.error(error.message);
     }
   };

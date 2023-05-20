@@ -61,7 +61,7 @@ const resolvers = {
 
         return messages;
       } catch (error: any) {
-        console.log("MessaeQuery", error);
+        // console.log("MessaeQuery", error);
         throw new GraphQLError(error.message);
       }
     },
@@ -254,7 +254,7 @@ const resolvers = {
 
         return true;
       } catch (error) {
-        console.log("sendMessage error", error);
+        // console.log("sendMessage error", error);
         throw new GraphQLError("Error sending message");
       }
     },

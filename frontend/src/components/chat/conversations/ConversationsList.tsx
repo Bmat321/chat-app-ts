@@ -59,7 +59,7 @@ const ConversationsList: React.FC<ConversationsListProps> = ({
         }
       );
     } catch (error) {
-      console.log("conversation deleted ", error);
+      // console.log("conversation deleted ", error);
     }
   };
 
@@ -68,7 +68,11 @@ const ConversationsList: React.FC<ConversationsListProps> = ({
   );
 
   return (
-    <Box width={{base: '100px', md:'400px'}} position='relative' height='100%'>
+    <Box
+      width={{ base: "100px", md: "400px" }}
+      position="relative"
+      height="100%"
+    >
       <Box
         py={2}
         px={4}
@@ -99,7 +103,7 @@ const ConversationsList: React.FC<ConversationsListProps> = ({
                 participant?.hasSeenLatestMessage
               )
             }
-            onDeleteConversation= {onDeleteConversation}
+            onDeleteConversation={onDeleteConversation}
             hasSeenLatestMessage={participant?.hasSeenLatestMessage}
             isSelected={conversation.id === router.query.conversationId}
           />

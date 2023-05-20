@@ -1,10 +1,14 @@
+import { useLazyQuery, useMutation } from "@apollo/client";
 import {
-  useLazyQuery,
-  useMutation
-} from "@apollo/client";
-import {
-  Button, Input, Modal, ModalBody, ModalCloseButton, ModalContent,
-  ModalHeader, ModalOverlay, Stack
+  Button,
+  Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  Stack,
 } from "@chakra-ui/react";
 import { Session } from "next-auth";
 import { useRouter } from "next/router";
@@ -17,7 +21,7 @@ import {
   CreateConversationInput,
   SearchedUser,
   SearchUsersData,
-  SearchUsersInput
+  SearchUsersInput,
 } from "../../../../utils/type";
 import Participants from "./Participants";
 import UserSearchLists from "./UserSearchLists";
@@ -47,7 +51,7 @@ const ConversationModal: React.FC<ModalProps> = ({
     useMutation<CreateConversationData, CreateConversationInput>(
       ConversationsOperation.Mutations.createConversation
     );
-  console.log("HERE IS MY SEARCH DATA", data);
+  // console.log("HERE IS MY SEARCH DATA", data);
 
   const addParticipants = (user: SearchedUser) => {
     setParticipants((prev) => [...prev, user]);
@@ -85,9 +89,9 @@ const ConversationModal: React.FC<ModalProps> = ({
       SetUsername("");
       onClose();
 
-      console.log("CONVERS DATA IS HERE", data);
+      // console.log("CONVERS DATA IS HERE", data);
     } catch (error: any) {
-      console.log("CreateConversation error", error);
+      // console.log("CreateConversation error", error);
       toast.error(error?.message);
     }
   };
